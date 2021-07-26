@@ -1,0 +1,66 @@
+ {% extends 'layout.html' %}
+
+
+{%block title %}
+Login    
+
+{% endblock  %}
+
+{%block content %}
+<section id="breadcrumbs" class="breadcrumbs">
+      <div class="container">
+
+        <div class="d-flex justify-content-between align-items-center">
+          <h2 class="text-center">Login Your Account</h2>
+          
+        </div>
+
+      </div>
+    </section><!-- End Breadcrumbs -->
+
+    
+
+    <section id="contact" class="contact">
+      <div class="container">
+
+      
+
+        <div class="row mt-5 justify-content-center" data-aos="fade-up">
+          <div class="col-lg-4">
+           <h4 class="text-center">Login Your Account</h4>
+
+          {% for message in messages %}
+            <div class="alert {{ message.tags }} alert-dismissible" role="alert">
+           <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+           <span aria-hidden="true">&times;</span>
+           </button>
+           {{ message }}
+           </div>
+           {% endfor %}
+
+
+            <form action="" method="post" role="form" >
+            {% csrf_token %}
+              
+              <div class="form-group">
+                <input type="text" class="form-control" name="name" id="subject" placeholder="user name" />
+                <div class="validate"></div>
+              </div>
+              <div class="form-group">
+                <input type="password" class="form-control" name="password" id="subject" placeholder="password" data-rule="minlen:4" data-msg="Please enter at least 8 chars of subject" />
+                <div class="validate"></div>
+              </div>
+              
+              <small>Forgot my <a href="{% url 'forgotpassword' %}">password</a><small><br><br>
+              <div class="text-center"><button type="submit" class='btn btn-success btn-block'>Login</button></div>
+            </form><br>
+             <p> Don't have any account?<a href="{% url 'registration' %}">Register Now</a></p>
+          </div>
+
+        </div>
+
+      </div>
+    </section><!-- End Contact Section -->
+
+</div>
+{% endblock  %}
